@@ -1,0 +1,84 @@
+一、	宏的录制与VBA编写运行
+1、	宏就是操作过程，录制宏操作过程自动转化为VBA代码。
+2、	VBA代码存储在VB编辑器里面。Excel2016开发工具里面有。
+3、	运行的几种办法：
+（1）	录制宏并运行；
+（2）	编写VBA代码，添加按钮运行；
+（3）	在VB编辑器运行。
+二、	VBA代码的基本结构与组成部分
+1、	宏程序语句
+‘运行后可以实现某种功能
+Sub test() ‘开始语句
+
+  Range(“a1”) = 100
+
+End Sub ‘结束语句
+2、	函数程序语句
+‘运行后可返回一个值
+Function shcount()
+
+Shcount = Sheets.Count’
+
+       End Function
+3、	在程序中应用的语句
+Sub test2()
+
+  Call test
+
+End Sub
+
+Sub test3()
+
+  For x = 1 To 100  ‘for next 循环语句
+Cells(x,1) = x
+         Next x
+
+        End Sub
+三、	VBA对象
+VBA中的对象就是我们操作的具有方法、属性的excel中支持的对象。
+Excel中几个常用对象的表示方法：
+1、	工作簿
+（1）	Workbooks 代表工作簿集合，所有的工作簿。Workbooks(N),表示已经打开的第N个工作簿。
+（2）	Workbooks(“工作簿名称”)
+（3）	ActiveWorkbook 正在操作的工作簿。
+（4）	ThisWorkbook 代码所在的工作簿
+2、	工作表
+（1）	Sheets(“工作表名称”)
+（2）	Sheet1 表示第一个插入的工作表，Sheet2 表示第二个插入的工作表
+（3）	Sheets(n) 表示按照排列顺序，第n个工作表
+（4）	ActiveSheet 表示活动工作表，光标所在工作表
+（5）	worksheet 也表示工作表，但是不包括图表工作表，宏工作表等。
+3、	单元格
+(1)	cells 所有单元格
+(2)	Range(“单元格地址”) 
+(3)	Cells(行数，列数)
+(4)	Activecell 正在选中或编辑的单元格
+(5)	Selection 正被选中或者选取的单元格或者单元格区域
+四、	VBA属性
+VBA属性就是VBA对象所具有的特点
+表示某个对象的属性的方法是 对象.属性 = 属性值
+Sub ttt()
+
+  Range(“a1”).Value= 100
+
+End Sub
+
+Sub ttt2()
+
+  Sheets(1).Name = “工作表改名了”
+
+End Sub
+
+Sub ttt3()
+  Range(“A2”).Interior.ColorIndex = 3
+End Sub
+五、	VBA方法
+VBA方法是作用于VBA对象上的动作，表示用某个方法作用于VBA上的对象，可以用下面的格式：
+对象.方法 参数名称：= 参数值
+Sub ttt4()
+  Range(“a1”).Copy Destination := Range(“a2”)
+End Sub
+
+Sub ttt5()
+  Sheet1.Move before:=Sheets(“Sheet3”)
+End Sub
